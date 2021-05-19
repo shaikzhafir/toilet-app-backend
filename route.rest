@@ -2,10 +2,7 @@ GET http://localhost:3000/toilets
 
 
 ###
-
 GET http://localhost:3000/toilets/60a4ac578d41a30624ae4e57 
-
-
 
 ###
 

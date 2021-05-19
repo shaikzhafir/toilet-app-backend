@@ -1,24 +1,22 @@
+require('dotenv').config() 
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 
+//allows express to parse json files 
 app.use(express.json())
 app.listen(3000, () => console.log('lala'))
 
 
-
-let DATABASE_URL = "mongodb://localhost/toilet-app"
-
-mongoose.connect(DATABASE_URL, {useNewUrlParser : true, useUnifiedTopology: true})
+mongoose.connect(process.env.ATLAS_DATABASE_URL, {useNewUrlParser : true, useUnifiedTopology: true})
 
 const db = mongoose.connection
 
 db.on('error', (error) => console.error(error))
 db.on('open',() => console.log('connected to db'))
 
-
+//handles routes to /toilets
 const toiletsRoute = require('./routes/toilets')
-
 app.use('/toilets',toiletsRoute)
 
 
