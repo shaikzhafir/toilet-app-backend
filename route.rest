@@ -1,0 +1,35 @@
+GET http://localhost:3000/toilets 
+
+
+###
+
+GET http://localhost:3000/toilets/60a4ac578d41a30624ae4e57 
+
+
+
+###
+
+POST http://localhost:3000/toilets
+Content-Type: application/json
+
+{
+    "location": "Fine Food",
+    "lat" : 1.342362, 
+    "lng" : 103.682109,
+    "hasBidet": false,
+    "name": "Fine Food toilet",
+    "rating": 1
+}
+
+###
+
+DELETE http://localhost:3000/toilets/60a4ac578d41a30624ae4e57  
+
+###
+
+PATCH http://localhost:3000/toilets/60a4abc98d41a30624ae4e56  
+Content-Type: application/json
+
+{
+    "name" : "hall 1 toilet"
+}
