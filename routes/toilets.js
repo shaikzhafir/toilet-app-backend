@@ -17,7 +17,7 @@ router.get('/', async (req,res) => {
 
 //get one 
 router.get('/:id', getToilet, async (req,res) => {
-    console.log(res.toilet);
+        res.json(res.toilet)
 })
 
 
@@ -43,6 +43,8 @@ router.post("/", async (req,res) => {
 
 router.patch("/:id", getToilet, async (req,res) => {
     //toilet stored inside res.toilet
+
+    console.log('im ins');
     if (req.body.name){
         res.toilet.name = req.body.name
     }
@@ -58,8 +60,12 @@ router.patch("/:id", getToilet, async (req,res) => {
     if (req.body.rating){
         res.toilet.rating = req.body.rating
     }
-    if (req.body.hsBidet){
+    if (req.body.hasBidet){
         res.toilet.hasBidet = req.body.hasBidet
+    }
+
+    if (req.body.image_url){
+        res.toilet.image_url = req.body.image_url
     }
 
     try {

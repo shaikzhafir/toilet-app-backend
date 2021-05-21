@@ -1,21 +1,21 @@
-GET http://localhost:3000/toilets 
+GET http://localhost:3000/api/toilets 
 
 
 ###
-GET http://localhost:3000/toilets/60a4ac578d41a30624ae4e57 
+GET http://localhost:3000/api/toilets/60a757303e80510d88a709d3
 
 ###
 
-POST http://localhost:3000/toilets
+POST http://localhost:3000/api/toilets
 Content-Type: application/json
 
 {
-    "location": "Fine Food",
-    "lat" : 1.342362, 
-    "lng" : 103.682109,
-    "hasBidet": false,
-    "name": "Fine Food toilet",
-    "rating": 1
+    "location": "Hive",
+    "lat" : 1.3431297652528165, 
+    "lng" : 103.68278744519097,
+    "hasBidet": true,
+    "name": "Hive basement toilet",
+    "rating": 6
 }
 
 ###
@@ -24,9 +24,9 @@ DELETE http://localhost:3000/toilets/60a4ac578d41a30624ae4e57
 
 ###
 
-PATCH http://localhost:3000/toilets/60a4abc98d41a30624ae4e56  
+PATCH http://localhost:3000/toilets/60a757303e80510d88a709d3
 Content-Type: application/json
 
 {
-    "name" : "hall 1 toilet"
+    "image_url" : "https://media.timeout.com/images/105290175/630/472/image.jpg"
 }
