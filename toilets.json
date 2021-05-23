@@ -1,0 +1,46 @@
+[
+  {
+    "location": "Fine Food",
+    "hasBidet": false,
+    "image_url": "https://i1.wp.com/u-insight.com/wp-content/uploads/2020/01/food6.png?resize=860%2C644&ssl=1",
+    "_id": "60a50a276d5a4e4224e726b8",
+    "name": "Fine Food toilet",
+    "rating": 1,
+    "lat": 1.342362,
+    "lng": 103.682109,
+    "__v": 0
+  },
+  {
+    "location": "ABN",
+    "hasBidet": true,
+    "image_url": "https://i.guim.co.uk/img/media/80ec165be749a30354f65b263f5fd58d36731070/0_376_5613_3368/master/5613.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=bbee1e36ed85411e0e1be219d50c82a2",
+    "_id": "60a69ad2016b594ea8d3e479",
+    "name": "ABN level 2 toilet",
+    "rating": 10,
+    "lat": 1.346801,
+    "lng": 103.681769,
+    "__v": 0
+  },
+  {
+    "location": "LWN toilet",
+    "hasBidet": true,
+    "image_url": "https://i.guim.co.uk/img/media/80ec165be749a30354f65b263f5fd58d36731070/0_376_5613_3368/master/5613.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=bbee1e36ed85411e0e1be219d50c82a2",
+    "_id": "60a69edb016b594ea8d3e47a",
+    "name": "LWN 2 toilet",
+    "rating": 7,
+    "lat": 1.347539385662045,
+    "lng": 103.68099265997382,
+    "__v": 0
+  },
+  {
+    "location": "Hive",
+    "hasBidet": true,
+    "image_url": "https://media.timeout.com/images/105290175/630/472/image.jpg",
+    "_id": "60a757303e80510d88a709d3",
+    "name": "Hive basement toilet",
+    "rating": 6,
+    "lat": 1.3431297652528165,
+    "lng": 103.68278744519097,
+    "__v": 0
+  }
+]

@@ -5,7 +5,7 @@ const app = express()
 
 //allows express to parse json files 
 app.use(express.json())
-app.listen(3000, () => console.log('lala'))
+app.listen(4000, () => console.log('lala'))
 
 
 mongoose.connect(process.env.ATLAS_DATABASE_URL, {useNewUrlParser : true, useUnifiedTopology: true})
