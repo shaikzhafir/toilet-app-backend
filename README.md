@@ -8,5 +8,6 @@
 2) create .env file in your root directory, include variable ATLAS_DATABASE_URL if using mongodb atlas, replace with your own connection url
 3) run and test routes
 4) add reviews
+5) test merge
 
 
