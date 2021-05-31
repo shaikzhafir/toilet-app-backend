@@ -13,20 +13,31 @@ Content-Type: application/json
     "location": "Hive",
     "lat" : 1.3431297652528165, 
     "lng" : 103.68278744519097,
-    "hasBidet": true,
+    "hasBidet": false,
     "name": "Hive basement toilet",
-    "rating": 6
+    "rating": 10
 }
 
 ###
 
-DELETE http://localhost:4000/api/toilets/60a4ac578d41a30624ae4e57  
-
-###
-
-PATCH http://localhost:4000/api/toilets/60a50a276d5a4e4224e726b8
+POST http://localhost:4000/api/reviews
 Content-Type: application/json
 
 {
-    "image_url" : "https://i1.wp.com/u-insight.com/wp-content/uploads/2020/01/food6.png?resize=860%2C644&ssl=1"
+    "reviewText": "Nice",
+    "toiletID": "60a757303e80510d88a709d3",
+    "date": "2021-5-31"
+}
+
+###
+
+DELETE http://localhost:4000/toilets/60a4ac578d41a30624ae4e57  
+
+###
+
+PATCH http://localhost:4000/toilets/60a757303e80510d88a709d3
+Content-Type: application/json
+
+{
+    "image_url" : "https://media.timeout.com/images/105290175/630/472/image.jpg"
 }

@@ -3,7 +3,8 @@ const router  = express.Router()
 const Toilet = require('../models/toilets')
 
 
-//get 
+
+//get all
 router.get('/', async (req,res) => {
     try {
         const toilets = await Toilet.find()
@@ -14,7 +15,7 @@ router.get('/', async (req,res) => {
 })
 
 
-//get one 
+//get one by id
 router.get('/:id', getToilet, async (req,res) => {
         res.json(res.toilet)
 })
