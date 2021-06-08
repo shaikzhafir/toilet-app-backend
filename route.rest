@@ -31,7 +31,10 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:4000/toilets/60a4ac578d41a30624ae4e57  
+DELETE http://localhost:4000/toilets/60b680b9e2ce7257e81299d7 
+
+###
+DELETE http://localhost:4000/reviews/60bfc7dd44e5b11aa926afca
 
 ###
 

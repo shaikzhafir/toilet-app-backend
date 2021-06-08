@@ -34,6 +34,16 @@ router.post('/', async (req,res) => {
     }
 })
 
+// delete
+router.delete("/:id", getReview, async (req,res) => {
+    try {
+        await res.review.remove()
+        res.json({message : "deleted review"})
+    } catch (error) {
+        res.status(500).json({message : error.message})
+    }
+})
+
 // middleware to find reviews
 async function getReview(req, res, next) {
     res.review = null
