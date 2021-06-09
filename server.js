@@ -19,5 +19,9 @@ db.on('open',() => console.log('connected to db'))
 const toiletsRoute = require('./routes/toilets')
 app.use('/api/toilets',toiletsRoute)
 
+// handle routes to /reviews
+const reviewsRoute = require('./routes/reviews')
+app.use('/api/reviews', reviewsRoute)
+
 
 
