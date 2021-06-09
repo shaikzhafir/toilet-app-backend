@@ -6,6 +6,10 @@ GET http://localhost:4000/api/toilets/60a757303e80510d88a709d3
 
 ###
 
+GET http://localhost:4000/api/reviews/60b5029651b593575c57c4bc
+
+###
+
 POST http://localhost:4000/api/toilets
 Content-Type: application/json
 
@@ -31,10 +35,13 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:4000/toilets/60b680b9e2ce7257e81299d7 
+DELETE http://localhost:4000/api/toilets/60a69edb016b594ea8d3e47a
 
 ###
-DELETE http://localhost:4000/reviews/60bfc7dd44e5b11aa926afca
+
+
+DELETE http://localhost:4000/api/reviews/60b5029651b593575c57c4bc
+
 
 ###
 
