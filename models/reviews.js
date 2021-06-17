@@ -13,7 +13,13 @@ const reviewsSchema = new mongoose.Schema({
 
     date : {
         type: Date,
-        require
+        required : true
+    },
+
+
+    rating : {
+        type : Number,
+        required : true
     }
 
 })

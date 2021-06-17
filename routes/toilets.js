@@ -57,9 +57,6 @@ router.patch("/:id", getToilet, async (req,res) => {
     if (req.body.lng){
         res.toilet.lng = req.body.lng
     }
-    if (req.body.rating){
-        res.toilet.rating = req.body.rating
-    }
     if (req.body.hasBidet){
         res.toilet.hasBidet = req.body.hasBidet
     }
@@ -67,6 +64,10 @@ router.patch("/:id", getToilet, async (req,res) => {
     if (req.body.image_url){
         res.toilet.image_url = req.body.image_url
     }
+
+    //purposely didnt include numRating and averageRating here 
+    //as they shouldnt be exposed to other methods? only 
+    //can be changed in calculateAverageRating
 
     try {
         const updatedToilet = await res.toilet.save()

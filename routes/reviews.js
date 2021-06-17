@@ -29,10 +29,14 @@ router.post("/", async (req, res) => {
     reviewText: req.body.reviewText,
     toiletID: req.body.toiletID,
     date: req.body.date,
+    rating: req.body.rating,
   });
 
   try {
     const newReview = await review.save();
+    console.log(`id is ${req.body.toiletID}, rating is  ${req.body.rating}`);
+    await calculateAverageRating(req.body.toiletID, req.body.rating);
+    console.log("lala");
     res.status(201).json(newReview);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -78,6 +82,25 @@ async function getReviewsOfToilet(req, res, next) {
     return res.status(500).json({ message: error.message });
   }
   next();
+}
+
+async function calculateAverageRating(toiletID, newRating) {
+  //find the toilet with the rating
+    const toilet = await Toilet.findById(toiletID);
+    // multiply averageRating by numRating
+    //add current rating to the result add 1 to numRating
+    //divide previous output by numRating
+    if (toilet.numRating == 0 && toilet.averageRating == 0) {
+      toilet.numRating = 1;
+      toilet.averageRating = newRating;
+      await toilet.save();
+    } else {
+      console.log(`sum is ${toilet}`);
+      let sumRating = toilet.numRating * toilet.averageRating;
+      toilet.numRating += 1;
+      toilet.averageRating = (sumRating + newRating) / toilet.numRating;
+      await toilet.save();
+    }
 }
 
 module.exports = router;

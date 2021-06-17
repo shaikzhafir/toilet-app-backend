@@ -30,7 +30,8 @@ Content-Type: application/json
 {
     "reviewText": "Nice",
     "toiletID": "60a757303e80510d88a709d3",
-    "date": "2021-5-31"
+    "date": "2021-5-31",
+    "rating" : 3
 }
 
 ###
