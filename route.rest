@@ -2,7 +2,7 @@ GET http://localhost:4000/api/toilets
 
 
 ###
-GET http://localhost:4000/api/toilets/60a757303e80510d88a709d3
+GET http://localhost:4000/api/toilets/60a69ad2016b594ea8d3e479
 
 ###
 
@@ -29,9 +29,9 @@ Content-Type: application/json
 
 {
     "reviewText": "Nice",
-    "toiletID": "60a757303e80510d88a709d3",
+    "toiletID": "60a69ad2016b594ea8d3e479",
     "date": "2021-5-31",
-    "rating" : 3
+    "rating" : 4
 }
 
 ###

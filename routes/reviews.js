@@ -90,15 +90,15 @@ async function calculateAverageRating(toiletID, newRating) {
     // multiply averageRating by numRating
     //add current rating to the result add 1 to numRating
     //divide previous output by numRating
-    if (toilet.numRating == 0 && toilet.averageRating == 0) {
+    if (toilet.numRating == 0 && toilet.rating == 0) {
       toilet.numRating = 1;
-      toilet.averageRating = newRating;
+      toilet.rating = newRating;
       await toilet.save();
     } else {
       console.log(`sum is ${toilet}`);
-      let sumRating = toilet.numRating * toilet.averageRating;
+      let sumRating = toilet.numRating * toilet.rating;
       toilet.numRating += 1;
-      toilet.averageRating = (sumRating + newRating) / toilet.numRating;
+      toilet.rating = (sumRating + newRating) / toilet.numRating;
       await toilet.save();
     }
 }

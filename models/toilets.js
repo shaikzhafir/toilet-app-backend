@@ -23,7 +23,7 @@ const toiletsSchema = new mongoose.Schema({
         required : true
     },
 
-    averageRating : {
+    rating : {
         type : Number,
         required : true,
         default : 0
