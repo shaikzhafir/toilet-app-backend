@@ -35,9 +35,9 @@ router.post("/", async (req, res) => {
   try {
     const newReview = await review.save();
     console.log(`id is ${req.body.toiletID}, rating is  ${req.body.rating}`);
-    await calculateAverageRating(req.body.toiletID, req.body.rating);
-    console.log("lala");
-    res.status(201).json(newReview);
+    let newRating = await calculateAverageRating(req.body.toiletID, req.body.rating);
+    console.log(newRating);
+    res.status(201).json({newReview,newRating});
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -94,13 +94,17 @@ async function calculateAverageRating(toiletID, newRating) {
       toilet.numRating = 1;
       toilet.rating = newRating;
       await toilet.save();
+      return toilet.rating 
     } else {
       console.log(`sum is ${toilet}`);
       let sumRating = toilet.numRating * toilet.rating;
       toilet.numRating += 1;
       toilet.rating = (sumRating + newRating) / toilet.numRating;
       await toilet.save();
+      return toilet.rating
     }
+
+
 }
 
 module.exports = router;
