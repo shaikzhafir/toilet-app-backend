@@ -23,5 +23,8 @@ app.use('/api/toilets',toiletsRoute)
 const reviewsRoute = require('./routes/reviews')
 app.use('/api/reviews', reviewsRoute)
 
+// handle routes to /reply
+const repliesRoute = require('./routes/replies')
+app.use('/api/replies', repliesRoute)
 
 

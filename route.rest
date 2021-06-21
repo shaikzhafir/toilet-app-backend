@@ -52,3 +52,19 @@ Content-Type: application/json
 {
     "image_url" : "https://media.timeout.com/images/105290175/630/472/image.jpg"
 }
+
+###
+GET http://localhost:4000/api/replies/123123123123213123
+
+###
+
+POST http://localhost:4000/api/replies
+Content-Type: application/json
+
+{
+    "replyText": "Nice",
+    "reviewID": "60be73efdd51fd7195fb13f9",
+    "date": "2021-5-31",
+}
+
+###
