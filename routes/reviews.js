@@ -99,7 +99,7 @@ async function calculateAverageRating(toiletID, newRating) {
       console.log(`sum is ${toilet}`);
       let sumRating = toilet.numRating * toilet.rating;
       toilet.numRating += 1;
-      toilet.rating = (sumRating + newRating) / toilet.numRating;
+      toilet.rating = ((sumRating + newRating) / toilet.numRating).toFixed(2);
       await toilet.save();
       return toilet.rating
     }
