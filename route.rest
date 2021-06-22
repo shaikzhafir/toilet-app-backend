@@ -36,35 +36,32 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:4000/api/toilets/60a69edb016b594ea8d3e47a
+DELETE http://localhost:4000/api/toilets/60d031216355124d207502ca
 
 ###
 
 
-DELETE http://localhost:4000/api/reviews/60b5029651b593575c57c4bc
+DELETE http://localhost:4000/api/reviews/60d031216355124d207502ca
 
 
 ###
 
-PATCH http://localhost:4000/toilets/60a757303e80510d88a709d3
+PATCH http://localhost:4000/api/toilets/60a69ad2016b594ea8d3e479
 Content-Type: application/json
 
 {
     "image_url" : "https://media.timeout.com/images/105290175/630/472/image.jpg"
 }
 
-###
-GET http://localhost:4000/api/replies/123123123123213123
+
 
 ###
-
 POST http://localhost:4000/api/replies
 Content-Type: application/json
 
 {
-    "replyText": "Nice",
-    "reviewID": "60be73efdd51fd7195fb13f9",
-    "date": "2021-5-31",
-}
 
-###
+    "replyText": "lalalala",
+    "reviewID": "60be73efdd51fd7195fb13f9",
+    "date" : "2021-05-23"
+}

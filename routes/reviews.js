@@ -86,23 +86,33 @@ async function getReviewsOfToilet(req, res, next) {
 
 async function calculateAverageRating(toiletID, newRating) {
   //find the toilet with the rating
-    const toilet = await Toilet.findById(toiletID);
+    let toilet = null
+
+    try {
+      toilet = await Toilet.findById(toiletID);
+      //case of adding for first time 
+      if (toilet.numRating == 0 || toilet.rating == 0) {
+        toilet.numRating = 1;
+        toilet.rating = newRating;
+        await toilet.save();
+        return toilet.rating 
+      } else {
+        console.log(`sum is ${toilet}`);
+        let sumRating = toilet.numRating * toilet.rating;
+        toilet.numRating += 1;
+        toilet.rating = (sumRating + newRating) / toilet.numRating;
+        await toilet.save();
+        return toilet.rating
+      }
+    } catch (error) {
+      return error
+    } 
+    
     // multiply averageRating by numRating
     //add current rating to the result add 1 to numRating
     //divide previous output by numRating
-    if (toilet.numRating == 0 && toilet.rating == 0) {
-      toilet.numRating = 1;
-      toilet.rating = newRating;
-      await toilet.save();
-      return toilet.rating 
-    } else {
-      console.log(`sum is ${toilet}`);
-      let sumRating = toilet.numRating * toilet.rating;
-      toilet.numRating += 1;
-      toilet.rating = ((sumRating + newRating) / toilet.numRating).toFixed(2);
-      await toilet.save();
-      return toilet.rating
-    }
+
+    
 
 
 }
