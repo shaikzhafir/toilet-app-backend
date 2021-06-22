@@ -24,7 +24,7 @@ router.get("/:reviewID" ,async(req, res)=> {
 
     // then return the replies that have the review id, e.g. getReviewsOfToilet
 
-    const replies = await Reply.find({reviewID: req.param.reviewID})
+    const replies = await Reply.find({reviewID: req.params.reviewID})
 
     // add it into response body
     res.json(replies)
@@ -36,7 +36,7 @@ router.post("/", async(req, res) => {
     const reply = new Reply({
         replyText: req.body.replyText,
         reviewID: req.body.reviewID,
-        date: req.body.date
+        date: req.body.date,
     })
 
     try {
