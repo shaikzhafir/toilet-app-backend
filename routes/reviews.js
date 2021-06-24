@@ -13,10 +13,16 @@ router.get("/", async (req, res) => {
   }
 });
 
+
+
 //get all review tagged to a toilet
 router.get("/toilet", getReviewsOfToilet, async (req, res) => {
   res.json(res.reviews);
 });
+
+router.get("/:toiletID/replies",getReviewsOfToilet, async (req,res) => {
+  
+})
 
 // get 1 by id
 router.get("/:id", getReview, async (req, res) => {
