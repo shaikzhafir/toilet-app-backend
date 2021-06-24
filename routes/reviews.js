@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Review = require("../models/reviews");
 const Toilet = require("../models/toilets");
+const toilet = require("./toilets")
 
 // get all
 router.get("/", async (req, res) => {
@@ -42,7 +43,7 @@ router.post("/", async (req, res) => {
     const newReview = await review.save();
     console.log(`id is ${req.body.toiletID}, rating is  ${req.body.rating}`);
     let newRating = await calculateAverageRating(req.body.toiletID, req.body.rating);
-    console.log(newRating);
+    
     res.status(201).json({newReview,newRating});
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -106,7 +107,7 @@ async function calculateAverageRating(toiletID, newRating) {
         console.log(`sum is ${toilet}`);
         let sumRating = toilet.numRating * toilet.rating;
         toilet.numRating += 1;
-        toilet.rating = (sumRating + newRating) / toilet.numRating;
+        toilet.rating = ((sumRating + newRating) / toilet.numRating).toFixed(2);
         await toilet.save();
         return toilet.rating
       }
