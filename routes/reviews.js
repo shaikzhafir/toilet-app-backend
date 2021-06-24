@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Review = require("../models/reviews");
 const Toilet = require("../models/toilets");
-const toilet = require("./toilets")
+const Replies = require("../models/replies");
+const toilet = require("./toilets");
 
 // get all
 router.get("/", async (req, res) => {
@@ -14,16 +15,41 @@ router.get("/", async (req, res) => {
   }
 });
 
-
-
 //get all review tagged to a toilet
 router.get("/toilet", getReviewsOfToilet, async (req, res) => {
   res.json(res.reviews);
 });
 
-router.get("/:toiletID/replies",getReviewsOfToilet, async (req,res) => {
-  
-})
+//tag replies to every review
+router.get("/replies/toilet", getReviewsOfToilet, async (req, res) => {
+  let replies = null;
+  try {
+    replies = await Replies.find();
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+  let repliesDict = replies.reduce((tempDict, reply) => {
+    if (tempDict[reply.reviewID]) {
+      tempDict[reply.reviewID].push(reply);
+    } else {
+      tempDict[reply.reviewID] = [];
+      tempDict[reply.reviewID].push(reply);
+    }
+
+    return tempDict;
+  }, {});
+
+  let reviewWithReplies = res.reviews.map((review) => {
+    if (repliesDict[review._id]) {
+      //need to convert toObject if else will include some other properties of mongodb object
+      return { ...review.toObject(), replies: repliesDict[review._id] };
+    } else {
+      return review;
+    }
+  });
+
+  res.json(reviewWithReplies);
+});
 
 // get 1 by id
 router.get("/:id", getReview, async (req, res) => {
@@ -42,9 +68,12 @@ router.post("/", async (req, res) => {
   try {
     const newReview = await review.save();
     console.log(`id is ${req.body.toiletID}, rating is  ${req.body.rating}`);
-    let newRating = await calculateAverageRating(req.body.toiletID, req.body.rating);
-    
-    res.status(201).json({newReview,newRating});
+    let newRating = await calculateAverageRating(
+      req.body.toiletID,
+      req.body.rating
+    );
+
+    res.status(201).json({ newReview, newRating });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -84,7 +113,6 @@ async function getReviewsOfToilet(req, res, next) {
       return res.status(404).json({ message: "cannot find toilet" });
     }
     res.reviews = await Review.find({ toiletID: res.toilet._id });
-    console.log(res.reviews);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -93,35 +121,31 @@ async function getReviewsOfToilet(req, res, next) {
 
 async function calculateAverageRating(toiletID, newRating) {
   //find the toilet with the rating
-    let toilet = null
+  let toilet = null;
 
-    try {
-      toilet = await Toilet.findById(toiletID);
-      //case of adding for first time 
-      if (toilet.numRating == 0 || toilet.rating == 0) {
-        toilet.numRating = 1;
-        toilet.rating = newRating;
-        await toilet.save();
-        return toilet.rating 
-      } else {
-        console.log(`sum is ${toilet}`);
-        let sumRating = toilet.numRating * toilet.rating;
-        toilet.numRating += 1;
-        toilet.rating = ((sumRating + newRating) / toilet.numRating).toFixed(2);
-        await toilet.save();
-        return toilet.rating
-      }
-    } catch (error) {
-      return error
-    } 
-    
-    // multiply averageRating by numRating
-    //add current rating to the result add 1 to numRating
-    //divide previous output by numRating
+  try {
+    toilet = await Toilet.findById(toiletID);
+    //case of adding for first time
+    if (toilet.numRating == 0 || toilet.rating == 0) {
+      toilet.numRating = 1;
+      toilet.rating = newRating;
+      await toilet.save();
+      return toilet.rating;
+    } else {
+      console.log(`sum is ${toilet}`);
+      let sumRating = toilet.numRating * toilet.rating;
+      toilet.numRating += 1;
+      toilet.rating = ((sumRating + newRating) / toilet.numRating).toFixed(2);
+      await toilet.save();
+      return toilet.rating;
+    }
+  } catch (error) {
+    return error;
+  }
 
-    
-
-
+  // multiply averageRating by numRating
+  //add current rating to the result add 1 to numRating
+  //divide previous output by numRating
 }
 
 module.exports = router;

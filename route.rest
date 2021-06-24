@@ -54,15 +54,20 @@ Content-Type: application/json
 }
 
 
+
 ###
-POST http://localhost:4000/api/reviews
+POST http://localhost:4000/api/replies
 Content-Type: application/json
 
 {
-    "reviewText": "Nice",
-    "toiletID": "60a69ad2016b594ea8d3e479",
-    "date": "2021-5-31",
-    "rating" : 4
+
+    "replyText": "lalalala",
+    "reviewID": "60be73efdd51fd7195fb13f9",
+    "date" : "2021-05-23"
 }
 
+
+
 ###
+
+GET http://localhost:4000/api/reviews/replies/toilet?toiletID=60c0fefb0753e03f9c922c7d
