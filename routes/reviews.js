@@ -44,7 +44,7 @@ router.get("/replies/toilet", getReviewsOfToilet, async (req, res) => {
       //need to convert toObject if else will include some other properties of mongodb object
       return { ...review.toObject(), replies: repliesDict[review._id] };
     } else {
-      return review;
+      return { ...review.toObject(), replies: [] };
     }
   });
 

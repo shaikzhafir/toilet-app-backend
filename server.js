@@ -1,6 +1,8 @@
 require('dotenv').config() 
 const express = require('express')
 const mongoose = require('mongoose')
+const { graphqlExpress,graphiqlExpress } = require('apollo-server-express');
+const toiletsSchema = require('./models/toilets')
 const app = express()
 
 //allows express to parse json files 
@@ -27,4 +29,8 @@ app.use('/api/reviews', reviewsRoute)
 const repliesRoute = require('./routes/replies')
 app.use('/api/replies', repliesRoute)
 
+
+app.use('/graphql', graphqlExpress({ schema: toiletsSchema }));
+
+app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
