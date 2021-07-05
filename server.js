@@ -3,7 +3,10 @@ const express = require('express')
 const mongoose = require('mongoose')
 const { graphqlExpress,graphiqlExpress } = require('apollo-server-express');
 const toiletsSchema = require('./models/toilets')
+const cors = require('cors')
 const app = express()
+
+app.use(cors())
 
 //allows express to parse json files 
 app.use(express.json())
