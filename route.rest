@@ -71,3 +71,8 @@ Content-Type: application/json
 ###
 
 GET http://localhost:4000/api/reviews/replies/toilet?toiletID=60c0fefb0753e03f9c922c7d
+
+
+
+###
+GET https://ntu-toilet-app.herokuapp.com/reviews

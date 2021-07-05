@@ -20,6 +20,11 @@ const reviewsSchema = new mongoose.Schema({
     rating : {
         type : Number,
         required : true
+    },
+    replies : {
+        type : Array,
+        required : true,
+        default : []
     }
 
 })

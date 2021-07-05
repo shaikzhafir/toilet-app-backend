@@ -19,6 +19,8 @@ router.get("/", async(req, res) => {
 
 // get all replies tagged to a review
 router.get("/:reviewID" ,async(req, res)=> {
+    //setup database connection
+    
     // google this
     console.log(req.params.reviewID)
 
