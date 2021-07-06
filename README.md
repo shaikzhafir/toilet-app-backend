@@ -1,7 +1,7 @@
 # toilet-app-backend
 ## Side project with (https://github.com/GlenH0)
 ## Built with React, ExpressJS, and MongoDB
-## Hosted on Vercel (frontend) and Heroku (Backend)
+## Hosted on Vercel (frontend) and Heroku (backend)
 # [Link](https://toilet-app-blush.vercel.app/)
 
 # Striving to provide knowledge of comfortable and user friendly toilets in NTU 
