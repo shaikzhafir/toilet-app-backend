@@ -10,7 +10,7 @@
 1. Map view to locate the toilets in NTU
 2. Details of toilet with user reviews and replies 
 
-## TODO (in the unforseen future)
+## TODO (in the unforeseen future)
 1. User login 
 2. Add NTU canteens as well
 
