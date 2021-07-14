@@ -1,20 +1,20 @@
 const {RESTDataSource} = require('apollo-datasource-rest')
 
 
-class ToiletsAPI extends RESTDataSource {
+class ReviewsAPI extends RESTDataSource {
     constructor(){
         super();
-        this.baseURL = 'http://localhost:4000/api/toilets'
+        this.baseURL = 'http://localhost:4000/api/reviews'
     }
 
-    async getToilets(){
+    async getReviews(){
         return this.get('/')
     }
 
-    async getToilet(id){
+    async getReview(id){
         return this.get(`/${id}`)
     }
 
 }
 
-module.exports =  ToiletsAPI
+module.exports =  ReviewsAPI
